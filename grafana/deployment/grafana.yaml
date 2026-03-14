@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+  labels:
+    app: my-grafana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-grafana
+  template:
+    metadata:
+      labels:
+        app: my-grafana
+    spec:
+      containers:
+      - name: grafana-container
+        image: grafana/grafana:latest 
+        ports:
+        - containerPort: 3000         
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "250m"
+            memory: "256Mi"
