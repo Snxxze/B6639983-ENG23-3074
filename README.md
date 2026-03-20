@@ -7,6 +7,8 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 
 ## Deploy Jenkins
 ```bash
+kubectl apply -f ./jenkins/pv.yaml
+kubectl apply -f ./jenkins/pvc.yaml
 kubectl apply -f ./jenkins/deployment/
 kubectl apply -f ./jenkins/service/
 kubectl apply -f ./jenkins/ingress/
@@ -14,6 +16,8 @@ kubectl apply -f ./jenkins/ingress/
 
 ## Deploy Grafana
 ```bash
+kubectl apply -f ./grafana/pv.yaml
+kubectl apply -f ./grafana/pvc.yaml
 kubectl apply -f ./grafana/deployment/
 kubectl apply -f ./grafana/service/
 kubectl apply -f ./grafana/ingress/
