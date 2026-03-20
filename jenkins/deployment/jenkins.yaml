@@ -14,12 +14,19 @@ spec:
       labels:
         app: my-jenkins
     spec:
+      volumes:
+      - name: jenkins-storage
+        persistentVolumeClaim:
+          claimName: jenkins-volume-claim
       containers:                      
       - name: jenkins-container
         image: jenkins/jenkins:lts
         ports:
         - containerPort: 8080
         - containerPort: 50000
+        volumeMounts:
+        - mountPath: /var/jenkins_home
+          name: jenkins-storage
         resources:                     
           limits:
             cpu: "1000m"
