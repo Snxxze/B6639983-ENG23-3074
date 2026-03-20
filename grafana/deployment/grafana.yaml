@@ -14,11 +14,18 @@ spec:
       labels:
         app: my-grafana
     spec:
+      volumes:
+      - name: grafana-storage
+        persistentVolumeClaim:
+          claimName: grafana-volume-claim
       containers:
       - name: grafana-container
         image: grafana/grafana:latest 
         ports:
         - containerPort: 3000         
+        volumeMounts:
+        - mountPath: /var/lib/grafana
+          name: grafana-storage
         resources:
           limits:
             cpu: "500m"
